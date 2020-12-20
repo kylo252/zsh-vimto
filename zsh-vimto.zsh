@@ -45,6 +45,7 @@ function accept-line-clear-rprompt {
 }
 
 zle -N accept-line-clear-rprompt
+
 # Hook enter being pressed whilst in cmd mode
 bindkey -M vicmd "^M" accept-line-clear-rprompt
 
@@ -58,6 +59,27 @@ bindkey '^h' backward-delete-char
 
 # Re-enable incremental search from emacs mode (it's useful)
 bindkey '^r' history-incremental-search-backward
+
+# Edit line in vim buffer ctrl-v
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^v' edit-command-line
+
+# Enter vim buffer from normal mode
+autoload -U edit-command-line && zle -N edit-command-line && bindkey -M vicmd "^v" edit-command-line
+
+# Fix Home/End
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+
+# Fix Delete
+bindkey '^[[3~' delete-char
+
+# [muscle-memory] kill line-forward
+bindkey '^K' kill-line
+
+# [muscle-memory] use ctrl+backspace instead
+bindkey -r '^W'
+bindkey '^H' backward-kill-word
 
 # Need to initially clear RPROMPT for it to work on first prompt
 export RPROMPT=$RPROMPT_PREVIOUS
