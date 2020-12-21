@@ -81,5 +81,8 @@ bindkey '^K' kill-line
 bindkey -r '^W'
 bindkey '^H' backward-kill-word
 
+# [muscle-memory] use alt+. to repeat argument
+bindkey '\e.' insert-last-word
+
 # Need to initially clear RPROMPT for it to work on first prompt
 export RPROMPT=$RPROMPT_PREVIOUS
