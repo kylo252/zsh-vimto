@@ -77,8 +77,7 @@ bindkey '^[[3~' delete-char
 # [muscle-memory] kill line-forward
 bindkey '^K' kill-line
 
-# [muscle-memory] use ctrl+backspace instead
-bindkey -r '^W'
+# [muscle-memory] use ctrl+backspace as well
 bindkey '^H' backward-kill-word
 
 # [muscle-memory] use alt+. to repeat argument
